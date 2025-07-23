@@ -1,0 +1,554 @@
+/* src/App.css */
+:root {
+  --primary: #6a11cb;
+  --secondary: #2575fc;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --space-dark: #0f0c29;
+  --space-purple: #302b63;
+  --space-blue: #24243e;
+  --purple-light: #a78bfa;
+  --purple-dark: #7e22ce;
+  --blue-light: #93c5fd;
+  --blue-dark: #1d4ed8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--space-dark), var(--space-blue));
+  color: var(--light);
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(30, 30, 46, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  background: linear-gradient(to right, var(--purple-light), var(--blue-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  color: var(--light);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.tabs button:hover {
+  opacity: 1;
+}
+
+.tabs button.active {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.tabs button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--purple-light), var(--blue-light));
+  border-radius: 3px 3px 0 0;
+}
+
+.app-content {
+  background: rgba(30, 30, 46, 0.7);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 500px;
+}
+
+/* Daily Horoscope Styles */
+.sign-selector {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.sign-selector label {
+  font-size: 1.1rem;
+}
+
+.sign-selector select {
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--light);
+  font-size: 1rem;
+  width: 200px;
+}
+
+.sign-selector button {
+  background: linear-gradient(to right, var(--purple-light), var(--blue-light));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.sign-selector button:hover {
+  transform: translateY(-2px);
+}
+
+.sign-selector button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.horoscope-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background: linear-gradient(to right, var(--purple-dark), var(--blue-dark));
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.detail-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--purple-light);
+}
+
+/* Birth Chart Styles */
+.birth-form {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.birth-form h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--purple-light);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--light);
+  font-size: 1rem;
+}
+
+.birth-form button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to right, var(--purple-light), var(--blue-light));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.birth-form button:hover {
+  transform: translateY(-2px);
+}
+
+.birth-chart-results h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--purple-light);
+}
+
+.chart-section {
+  margin-bottom: 3rem;
+}
+
+.chart-section h3 {
+  margin-bottom: 1.5rem;
+  color: var(--blue-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.positions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.position-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.position-item .label {
+  opacity: 0.7;
+}
+
+.position-item .value {
+  font-weight: bold;
+  color: var(--blue-light);
+}
+
+.aspects-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.aspect-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+
+.aspect-planets {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--purple-light);
+}
+
+.aspect-type {
+  background: rgba(167, 139, 250, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Compatibility Styles */
+.compatibility-form {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.compatibility-form h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--purple-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sign-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.compatibility-form button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to right, var(--purple-light), var(--blue-light));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.compatibility-form button:hover {
+  transform: translateY(-2px);
+}
+
+.compatibility-results {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.compatibility-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.compatibility-header h2 {
+  color: var(--purple-light);
+}
+
+.compatibility-score {
+  text-align: center;
+}
+
+.score-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-dark), var(--blue-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+}
+
+.score-label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.compatibility-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.strengths, .challenges {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.strengths h3 {
+  color: #4ade80;
+  margin-bottom: 1rem;
+}
+
+.challenges h3 {
+  color: #f87171;
+  margin-bottom: 1rem;
+}
+
+.strengths ul, .challenges ul {
+  padding-left: 1.5rem;
+}
+
+.strengths li, .challenges li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.compatibility-advice {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #fbbf24;
+}
+
+.compatibility-advice h3 {
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Starry background animation */
+@keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+
+.stars, .twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stars {
+  background: #000 url('https://i.ibb.co/92Q2Qmh/stars.png') repeat top center;
+  z-index: 0;
+}
+
+.twinkling {
+  background: transparent url('https://i.ibb.co/XLzYfYr/twinkling.png') repeat top center;
+  z-index: 1;
+  animation: move-twink-back 200s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tabs button {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .sign-pair {
+    grid-template-columns: 1fr;
+  }
+  
+  .compatibility-details {
+    grid-template-columns: 1fr;
+  }
+  
+  .compatibility-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .compatibility-score {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .sign-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .sign-selector select {
+    width: 100%;
+  }
+  
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .birth-form, .compatibility-form {
+    padding: 1rem;
+  }
+}
