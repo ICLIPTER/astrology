@@ -1,1 +1,1 @@
-An Astrology app.
+An Astrology 
